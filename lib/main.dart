@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'College Essentials'),
     );
   }
 }
@@ -38,12 +38,12 @@ class MyHomePage extends StatelessWidget {
           // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
+            // DrawerHeader(
+            //   child: Text('Options'),
+            //   decoration: BoxDecoration(
+            //     color: Colors.blue,
+            //   ),
+            // ),
             ListTile(
               title: Text('Item 1'),
               onTap: () {
