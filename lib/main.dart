@@ -1,5 +1,7 @@
-import 'package:college_essentials_app/MyHomePage.dart';
 import 'package:flutter/material.dart';
+
+import 'package:college_essentials_app/MyHomePage.dart';
+import 'package:college_essentials_app/screens/GpaCalculator.dart';
 
 void main() {
   runApp(MyApp());
