@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Container(
         width: double.infinity,
@@ -22,31 +22,31 @@ class MyHomePage extends StatelessWidget {
           children: <Widget>[
             RaisedButton(
               child: new Text("GPA Calculator"),
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToGpaCalculator(context),
             ),
             RaisedButton(
               child: new Text("TO-DO List"),
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToToDoList(context),
             ),
             RaisedButton(
               child: new Text("Notes"),
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToNotes(context),
             ),
             RaisedButton(
               child: new Text("Upcoming Events"),
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToUpcomingEvents(context),
             ),
             RaisedButton(
               child: new Text("Grades Tracker"),
-              color: Colors.redAccent,
+              color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToGradesTracker(context),
             ),

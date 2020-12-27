@@ -39,7 +39,7 @@ class _GpaCalculator extends State<GpaCalculator> {
         title: Text(
           'GPA Calculator',
         ),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Container(
         alignment: Alignment.center,
