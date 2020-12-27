@@ -31,7 +31,7 @@ class Navigation {
 
   static Future navigateToToDoList(context) async {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoList()));
+        context, MaterialPageRoute(builder: (context) => ToDoScreen()));
   }
 
   static Future navigateToUpcomingEvents(context) async {

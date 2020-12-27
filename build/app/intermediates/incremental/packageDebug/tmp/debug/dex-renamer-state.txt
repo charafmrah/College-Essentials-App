@@ -1,4 +1,4 @@
-#Sun Dec 27 17:49:02 EET 2020
-base.0=C\:\\Users\\chara\\Documents\\college_essentials_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sun Dec 27 20:20:28 EET 2020
+base.0=D\:\\project\\college_essentials_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
