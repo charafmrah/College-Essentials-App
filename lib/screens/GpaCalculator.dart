@@ -13,8 +13,6 @@ class GpaCalculator extends StatefulWidget {
 }
 
 class _GpaCalculator extends State<GpaCalculator> {
-  String creditDropDownValue = "1";
-  String scoreDropdownValue = "A";
   List<String> creditList = ["0", "1", "2", "3", "4", "5"];
   List<String> scoreList = [
     "A",
@@ -31,9 +29,87 @@ class _GpaCalculator extends State<GpaCalculator> {
     "F",
     "NA"
   ];
+  int credit1, credit2, credit3, credit4, credit5;
+  String grade1, grade2, grade3, grade4, grade5;
+  double score1, score2, score3, score4, score5;
+
+  double calculcateGpa(
+      int credit1,
+      int credit2,
+      int credit3,
+      int credit4,
+      int credit5,
+      String grade1,
+      String grade2,
+      String grade3,
+      String grade4,
+      String grade5) {
+    return ((credit1 * score1) +
+            (credit2 * score2) +
+            (credit3 * score3) +
+            (credit4 * score4) +
+            (credit5 * score5)) /
+        (credit1 + credit2 + credit3 + credit4 + credit5);
+  }
+
+  double convertGradeToScore(String score) {
+    if (score == "A") {
+      return 4.0;
+    } else if (score == "A-") {
+      return 3.67;
+    } else if (score == "B+") {
+      return 3.33;
+    } else if (score == "B") {
+      return 3.0;
+    } else if (score == "B-") {
+      return 2.67;
+    } else if (score == "C+") {
+      return 2.33;
+    } else if (score == "C") {
+      return 2.0;
+    } else if (score == "C-") {
+      return 1.67;
+    } else if (score == "D+") {
+      return 1.33;
+    } else if (score == "D") {
+      return 1.0;
+    } else if (score == "D-") {
+      return 0.67;
+    } else if (score == "NA") {
+      return 0;
+    } else {
+      return 0;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    String credit1DropDownValue = "1";
+    String credit2DropDownValue = "1";
+    String credit3DropDownValue = "1";
+    String credit4DropDownValue = "1";
+    String credit5DropDownValue = "1";
+    String grade1DropdownValue = "A";
+    String grade2DropdownValue = "A";
+    String grade3DropdownValue = "A";
+    String grade4DropdownValue = "A";
+    String grade5DropdownValue = "A";
+    credit1 = int.parse(credit1DropDownValue);
+    credit2 = int.parse(credit2DropDownValue);
+    credit3 = int.parse(credit3DropDownValue);
+    credit4 = int.parse(credit4DropDownValue);
+    credit5 = int.parse(credit5DropDownValue);
+    grade1 = grade1DropdownValue;
+    grade2 = grade2DropdownValue;
+    grade3 = grade3DropdownValue;
+    grade4 = grade4DropdownValue;
+    grade5 = grade5DropdownValue;
+    score1 = convertGradeToScore(grade1);
+    score2 = convertGradeToScore(grade2);
+    score3 = convertGradeToScore(grade3);
+    score4 = convertGradeToScore(grade4);
+    score5 = convertGradeToScore(grade5);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -43,257 +119,300 @@ class _GpaCalculator extends State<GpaCalculator> {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: GridView.count(crossAxisCount: 3, children: <Widget>[
-          //First Row
-          Text(
-            "Course 1:",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          DropdownButton<String>(
-            value: creditDropDownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                creditDropDownValue = newValue;
-              });
-            },
-            items: creditList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          DropdownButton<String>(
-            value: scoreDropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                scoreDropdownValue = newValue;
-              });
-            },
-            items: scoreList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
+        child: GridView.count(
+            crossAxisCount: 3,
+            childAspectRatio: (1.5),
+            children: <Widget>[
+              //First Row
+              Text(
+                "",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Text(
+                "Credit",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Text(
+                "Score",
+                style: Theme.of(context).textTheme.headline5,
+              ),
 
-          //Second Row
-          Text(
-            "Course 2:",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          DropdownButton<String>(
-            value: creditDropDownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                creditDropDownValue = newValue;
-              });
-            },
-            items: creditList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          DropdownButton<String>(
-            value: scoreDropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                scoreDropdownValue = newValue;
-              });
-            },
-            items: scoreList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
+              //Second Row
+              Text(
+                "Course 1:",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              DropdownButton<String>(
+                value: credit1DropDownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 5,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    credit1DropDownValue = newValue;
+                    credit1 = int.parse('newValue');
+                  });
+                },
+                items: creditList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: grade1DropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    grade1DropdownValue = newValue;
+                    grade1 = newValue;
+                  });
+                },
+                items: scoreList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
 
-          //Third Row
-          Text(
-            "Course 3:",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          DropdownButton<String>(
-            value: creditDropDownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                creditDropDownValue = newValue;
-              });
-            },
-            items: creditList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          DropdownButton<String>(
-            value: scoreDropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                scoreDropdownValue = newValue;
-              });
-            },
-            items: scoreList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
+              //Second Row
+              Text(
+                "Course 2:",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              DropdownButton<String>(
+                value: credit2DropDownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    credit2DropDownValue = newValue;
+                    credit2 = int.parse('newValue');
+                  });
+                },
+                items: creditList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: grade2DropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    grade2DropdownValue = newValue;
+                    grade2 = newValue;
+                  });
+                },
+                items: scoreList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
 
-          //Fourth Row
-          Text(
-            "Course 4:",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          DropdownButton<String>(
-            value: creditDropDownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                creditDropDownValue = newValue;
-              });
-            },
-            items: creditList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          DropdownButton<String>(
-            value: scoreDropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                scoreDropdownValue = newValue;
-              });
-            },
-            items: scoreList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
+              //Third Row
+              Text(
+                "Course 3:",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              DropdownButton<String>(
+                value: credit3DropDownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    credit3DropDownValue = newValue;
+                    credit3 = int.parse('newValue');
+                  });
+                },
+                items: creditList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: grade3DropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    grade3DropdownValue = newValue;
+                    grade3 = newValue;
+                  });
+                },
+                items: scoreList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
 
-          //Fifth Row
-          Text(
-            "Course 5:",
-            style: Theme.of(context).textTheme.headline5,
-          ),
-          DropdownButton<String>(
-            value: creditDropDownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                creditDropDownValue = newValue;
-              });
-            },
-            items: creditList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-          DropdownButton<String>(
-            value: scoreDropdownValue,
-            icon: Icon(Icons.arrow_downward),
-            iconSize: 24,
-            elevation: 16,
-            style: TextStyle(color: Colors.deepPurple),
-            underline: Container(
-              height: 2,
-              color: Colors.deepPurpleAccent,
-            ),
-            onChanged: (String newValue) {
-              setState(() {
-                scoreDropdownValue = newValue;
-              });
-            },
-            items: scoreList.map<DropdownMenuItem<String>>((String value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
-          ),
-        ]),
+              //Fourth Row
+              Text(
+                "Course 4:",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              DropdownButton<String>(
+                value: credit4DropDownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    credit4DropDownValue = newValue;
+                    credit4 = int.parse('newValue');
+                  });
+                },
+                items: creditList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: grade4DropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    grade4DropdownValue = newValue;
+                    grade4 = newValue;
+                  });
+                },
+                items: scoreList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+
+              //Fifth Row
+              Text(
+                "Course 5:",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              DropdownButton<String>(
+                value: credit5DropDownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    credit5DropDownValue = newValue;
+                    credit5 = int.parse(newValue);
+                  });
+                },
+                items: creditList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+              DropdownButton<String>(
+                value: grade5DropdownValue,
+                icon: Icon(Icons.arrow_downward),
+                iconSize: 24,
+                elevation: 16,
+                style: TextStyle(color: Colors.blue),
+                underline: Container(
+                  height: 2,
+                  color: Colors.lightBlueAccent,
+                ),
+                onChanged: (String newValue) {
+                  setState(() {
+                    grade5DropdownValue = newValue;
+                    grade5 = newValue;
+                  });
+                },
+                items: scoreList.map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+
+              //Sixth row
+              Text(
+                "",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Text(
+                "GPA =",
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Text(
+                calculcateGpa(credit1, credit2, credit3, credit4, credit5,
+                        grade1, grade2, grade3, grade4, grade5)
+                    .toString(),
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            ]),
       ),
 
       // menu bar:
