@@ -50,13 +50,13 @@ class _TaskListState extends State<TaskList> {
                 ),
               ),
               direction: DismissDirection.startToEnd,
-              child: SwitchListTile(
+              child: CheckboxListTile(
                 title: Text(_myList[index]["title"]),
                 value: _myList[index]["done"],
-                activeColor: Colors.green,
+                activeColor: Colors.lightBlueAccent,
                 secondary: CircleAvatar(
                   foregroundColor: Colors.white,
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.lightBlueAccent,
                   child:
                       Icon(_myList[index]["done"] ? Icons.check : Icons.close),
                 ),

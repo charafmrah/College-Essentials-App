@@ -41,7 +41,7 @@ class _ScreenState extends State<ToDoScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("To-Do List"),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.lightBlueAccent,
         centerTitle: true,
       ),
       body: Column(
@@ -55,13 +55,14 @@ class _ScreenState extends State<ToDoScreen> {
                     controller: _textfieldController,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green)),
+                          borderSide:
+                              BorderSide(color: Colors.lightBlueAccent)),
                     ),
                   ),
                 ),
                 RaisedButton(
                   child: Text("Add"),
-                  color: Colors.green,
+                  color: Colors.lightBlueAccent,
                   textColor: Colors.white,
                   onPressed: _addTask,
                 ),
