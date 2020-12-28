@@ -6,7 +6,7 @@ class GradesTracker extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Grades Tracker'),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Column(

@@ -6,7 +6,7 @@ class Notes extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Notes'),
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
         child: Column(

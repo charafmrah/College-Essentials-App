@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class UpcomingEvents extends StatelessWidget {
+class Timer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Upcoming Events'),
+        title: Text('Timer'),
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: Center(
