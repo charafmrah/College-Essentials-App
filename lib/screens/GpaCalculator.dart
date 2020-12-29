@@ -29,27 +29,31 @@ class _GpaCalculator extends State<GpaCalculator> {
     "F",
     "NA"
   ];
-  int credit1, credit2, credit3, credit4, credit5;
+  String credit1, credit2, credit3, credit4, credit5;
   String grade1, grade2, grade3, grade4, grade5;
   double score1, score2, score3, score4, score5;
 
   double calculcateGpa(
-      int credit1,
-      int credit2,
-      int credit3,
-      int credit4,
-      int credit5,
+      String credit1,
+      String credit2,
+      String credit3,
+      String credit4,
+      String credit5,
       String grade1,
       String grade2,
       String grade3,
       String grade4,
       String grade5) {
-    return ((credit1 * score1) +
-            (credit2 * score2) +
-            (credit3 * score3) +
-            (credit4 * score4) +
-            (credit5 * score5)) /
-        (credit1 + credit2 + credit3 + credit4 + credit5);
+    return ((int.parse(credit1) * score1) +
+            (int.parse(credit2) * score2) +
+            (int.parse(credit3) * score3) +
+            (int.parse(credit4) * score4) +
+            (int.parse(credit5) * score5)) /
+        (int.parse(credit1) +
+            int.parse(credit2) +
+            int.parse(credit3) +
+            int.parse(credit4) +
+            int.parse(credit5));
   }
 
   double convertGradeToScore(String score) {
@@ -82,23 +86,24 @@ class _GpaCalculator extends State<GpaCalculator> {
     }
   }
 
+  String credit1DropDownValue = "1";
+  String credit2DropDownValue = "1";
+  String credit3DropDownValue = "1";
+  String credit4DropDownValue = "1";
+  String credit5DropDownValue = "1";
+  String grade1DropdownValue = "NA";
+  String grade2DropdownValue = "NA";
+  String grade3DropdownValue = "NA";
+  String grade4DropdownValue = "NA";
+  String grade5DropdownValue = "NA";
+
   @override
   Widget build(BuildContext context) {
-    String credit1DropDownValue = "1";
-    String credit2DropDownValue = "1";
-    String credit3DropDownValue = "1";
-    String credit4DropDownValue = "1";
-    String credit5DropDownValue = "1";
-    String grade1DropdownValue = "A";
-    String grade2DropdownValue = "A";
-    String grade3DropdownValue = "A";
-    String grade4DropdownValue = "A";
-    String grade5DropdownValue = "A";
-    credit1 = int.parse(credit1DropDownValue);
-    credit2 = int.parse(credit2DropDownValue);
-    credit3 = int.parse(credit3DropDownValue);
-    credit4 = int.parse(credit4DropDownValue);
-    credit5 = int.parse(credit5DropDownValue);
+    credit1 = credit1DropDownValue;
+    credit2 = credit2DropDownValue;
+    credit3 = credit3DropDownValue;
+    credit4 = credit4DropDownValue;
+    credit5 = credit5DropDownValue;
     grade1 = grade1DropdownValue;
     grade2 = grade2DropdownValue;
     grade3 = grade3DropdownValue;
@@ -155,7 +160,7 @@ class _GpaCalculator extends State<GpaCalculator> {
                 onChanged: (String newValue) {
                   setState(() {
                     credit1DropDownValue = newValue;
-                    credit1 = int.parse('newValue');
+                    credit1 = newValue;
                   });
                 },
                 items: creditList.map<DropdownMenuItem<String>>((String value) {
@@ -207,7 +212,7 @@ class _GpaCalculator extends State<GpaCalculator> {
                 onChanged: (String newValue) {
                   setState(() {
                     credit2DropDownValue = newValue;
-                    credit2 = int.parse('newValue');
+                    credit2 = newValue;
                   });
                 },
                 items: creditList.map<DropdownMenuItem<String>>((String value) {
@@ -259,7 +264,7 @@ class _GpaCalculator extends State<GpaCalculator> {
                 onChanged: (String newValue) {
                   setState(() {
                     credit3DropDownValue = newValue;
-                    credit3 = int.parse('newValue');
+                    credit3 = newValue;
                   });
                 },
                 items: creditList.map<DropdownMenuItem<String>>((String value) {
@@ -311,7 +316,7 @@ class _GpaCalculator extends State<GpaCalculator> {
                 onChanged: (String newValue) {
                   setState(() {
                     credit4DropDownValue = newValue;
-                    credit4 = int.parse('newValue');
+                    credit4 = newValue;
                   });
                 },
                 items: creditList.map<DropdownMenuItem<String>>((String value) {
@@ -363,7 +368,7 @@ class _GpaCalculator extends State<GpaCalculator> {
                 onChanged: (String newValue) {
                   setState(() {
                     credit5DropDownValue = newValue;
-                    credit5 = int.parse(newValue);
+                    credit5 = newValue;
                   });
                 },
                 items: creditList.map<DropdownMenuItem<String>>((String value) {
