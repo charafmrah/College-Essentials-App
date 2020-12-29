@@ -1,7 +1,8 @@
 import 'package:college_essentials_app/MyHomePage.dart';
+import 'package:college_essentials_app/screens/CountDownTimer.dart';
 import 'package:college_essentials_app/screens/GradesTracker.dart';
 import 'package:college_essentials_app/screens/Notes.dart';
-import 'package:college_essentials_app/screens/Timer.dart';
+import 'package:college_essentials_app/screens/CountDownTimer.dart';
 import 'package:college_essentials_app/screens/ToDoList.dart';
 import 'package:college_essentials_app/screens/UpcomingEvents.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,7 @@ class Navigation {
   }
 
   static Future navigateToTimer(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Timer()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CountDownTimer()));
   }
 }
