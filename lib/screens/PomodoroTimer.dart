@@ -1,14 +1,13 @@
 import 'dart:math' as math;
-import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 
-class CountDownTimer extends StatefulWidget {
+class PomodoroTimer extends StatefulWidget {
   @override
-  _CountDownTimerState createState() => _CountDownTimerState();
+  _PomodoroTimerState createState() => _PomodoroTimerState();
 }
 
-class _CountDownTimerState extends State<CountDownTimer>
+class _PomodoroTimerState extends State<PomodoroTimer>
     with TickerProviderStateMixin {
   AnimationController controller;
 
@@ -22,7 +21,7 @@ class _CountDownTimerState extends State<CountDownTimer>
     super.initState();
     controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 5),
+      duration: Duration(minutes: 25),
     );
   }
 
@@ -30,10 +29,10 @@ class _CountDownTimerState extends State<CountDownTimer>
   Widget build(BuildContext context) {
     ThemeData themeData = Theme.of(context);
     return Scaffold(
-      backgroundColor: Colors.white10,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          'Timer',
+          'Pomodoro Timer',
         ),
         backgroundColor: Colors.lightBlueAccent,
       ),
@@ -44,14 +43,9 @@ class _CountDownTimerState extends State<CountDownTimer>
               children: <Widget>[
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: Container(
-                    color: Colors.amber,
-                    height:
-                        controller.value * MediaQuery.of(context).size.height,
-                  ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(10.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -59,7 +53,7 @@ class _CountDownTimerState extends State<CountDownTimer>
                         child: Align(
                           alignment: FractionalOffset.center,
                           child: AspectRatio(
-                            aspectRatio: 1.0,
+                            aspectRatio: 1.2,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(
@@ -78,27 +72,6 @@ class _CountDownTimerState extends State<CountDownTimer>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      Container(
-                                        margin: EdgeInsets.all(50),
-                                        child: TextField(
-                                          decoration: new InputDecoration(
-                                              hintText: "Enter time in minutes",
-                                              labelText: "Minutes:",
-                                              labelStyle: new TextStyle(
-                                                  color: Colors.white),
-                                              hintStyle: new TextStyle(
-                                                  color: Colors.white),
-                                              border: new UnderlineInputBorder(
-                                                  borderSide: new BorderSide(
-                                                      color: Colors.white))),
-                                          cursorColor: Colors.white,
-                                          keyboardType: TextInputType.number,
-                                          inputFormatters: <TextInputFormatter>[
-                                            FilteringTextInputFormatter
-                                                .digitsOnly
-                                          ], // Only numbers can be entered
-                                        ),
-                                      ),
                                       // Text(
                                       //   "Count Down Timer",
                                       //   style: TextStyle(
@@ -108,7 +81,7 @@ class _CountDownTimerState extends State<CountDownTimer>
                                       Text(
                                         timerString,
                                         style: TextStyle(
-                                            fontSize: 112.0,
+                                            fontSize: 120.0,
                                             color: Colors.white),
                                       ),
                                     ],
