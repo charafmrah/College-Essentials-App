@@ -53,7 +53,7 @@ class _PomodoroTimerState extends State<PomodoroTimer>
                         child: Align(
                           alignment: FractionalOffset.center,
                           child: AspectRatio(
-                            aspectRatio: 1.2,
+                            aspectRatio: 1.0,
                             child: Stack(
                               children: <Widget>[
                                 Positioned.fill(
@@ -61,7 +61,7 @@ class _PomodoroTimerState extends State<PomodoroTimer>
                                       painter: CustomTimerPainter(
                                     animation: controller,
                                     backgroundColor: Colors.white,
-                                    color: themeData.indicatorColor,
+                                    color: Colors.white,
                                   )),
                                 ),
                                 Align(

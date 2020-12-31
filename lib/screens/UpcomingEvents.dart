@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class eventspage extends StatefulWidget {
+class UpcomingEvents extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _UpcomingEvents createState() => _UpcomingEvents();
 }
 
-class _HomePageState extends State<eventspage> {
+class _UpcomingEvents extends State<UpcomingEvents> {
   CalendarController _controller;
   Map<DateTime, List<dynamic>> _events;
   List<dynamic> _selectedEvents;
