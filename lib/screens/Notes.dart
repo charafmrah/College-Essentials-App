@@ -8,14 +8,16 @@ class Notes extends StatelessWidget {
         title: Text('Notes'),
         backgroundColor: Colors.lightBlueAccent,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            // CODE GOES HERE
-          ],
-        ),
-      ),
+      body: ListView.builder(itemBuilder: (context, index) {
+        return Card(
+          child: Column(
+            children: <Widget>[
+              Text('Title'),
+              Text('Text'),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

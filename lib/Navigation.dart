@@ -2,7 +2,6 @@ import 'package:college_essentials_app/MyHomePage.dart';
 import 'package:college_essentials_app/screens/PomodoroTimer.dart';
 import 'package:college_essentials_app/screens/GradesTracker.dart';
 import 'package:college_essentials_app/screens/Notes.dart';
-import 'package:college_essentials_app/screens/PomodoroTimer.dart';
 import 'package:college_essentials_app/screens/ToDoList.dart';
 import 'package:college_essentials_app/screens/UpcomingEvents.dart';
 import 'package:flutter/material.dart';
