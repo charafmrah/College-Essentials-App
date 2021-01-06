@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:college_essentials_app/Navigation.dart';
 
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,15 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Pomodoro Timer"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.info,
+              color: Colors.white,
+            ),
+            onPressed: () => Navigation.navigateToPomodoroTimerInfo(context),
+          )
+        ],
       ),
       body: Center(
         child: Column(

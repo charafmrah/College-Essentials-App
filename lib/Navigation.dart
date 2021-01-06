@@ -4,6 +4,7 @@ import 'package:college_essentials_app/screens/BasicCalculator.dart';
 import 'package:college_essentials_app/screens/NotesList.dart';
 import 'package:college_essentials_app/screens/ToDoList.dart';
 import 'package:college_essentials_app/screens/UpcomingEvents.dart';
+import 'package:college_essentials_app/screens/timer_resources/PomodoroTimerInfo.dart';
 import 'package:flutter/material.dart';
 
 import 'package:college_essentials_app/screens/GpaCalculator.dart';
@@ -44,5 +45,10 @@ class Navigation {
   static Future navigateToTimer(context) async {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => PomodoroTimer()));
+  }
+
+  static Future navigateToPomodoroTimerInfo(context) async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => PomodoroTimerInfo()));
   }
 }
