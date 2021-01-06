@@ -27,7 +27,6 @@ class _PomodoroTimerState extends State<PomodoroTimer>
 
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
