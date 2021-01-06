@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return NoteInheritedWidget(
       MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: "College Essentials",
         home: MyHomePage(),
       ),

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 #Wed Jan 06 20:49:00 EET 2021
 base.0=C\:\\Users\\chara\\Documents\\college_essentials_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+=======
+#Wed Jan 06 20:55:10 EET 2021
+base.0=D\:\\Main_Project\\college_essentials_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+>>>>>>> cb01affd7caa3bbfd8d2808c20320527ca8b6e2d
 path.0=classes.dex
 renamed.0=classes.dex

@@ -4,34 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:college_essentials_app/todo_list_resources/path.dart';
 import 'package:college_essentials_app/todo_list_resources/TodoListTaskList.dart';
 
-class ToDoScreen extends StatefulWidget {
+class ToDoListScreen extends StatefulWidget {
   @override
-  _ScreenState createState() => _ScreenState();
+  ToDoListCondition createState() => ToDoListCondition();
 }
 
-class _ScreenState extends State<ToDoScreen> {
-  List _myList = [];
-  final _textfieldController = TextEditingController();
+class ToDoListCondition extends State<ToDoListScreen> {
+  List tdList = [];
+  final textcontroller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    PathProvider.readData().then((data) {
+    Path.readData().then((data) {
       setState(() {
-        _myList = json.decode(data);
+        tdList = json.decode(data);
       });
     });
   }
 
-  void _addTask() {
-    if (_textfieldController.text != "") {
+  void taskadd() {
+    if (textcontroller.text != "") {
       setState(() {
         Map<String, dynamic> newList = Map();
-        newList["title"] = _textfieldController.text;
+        newList["title"] = textcontroller.text;
         newList["done"] = false;
-        _myList.add(newList);
-        _textfieldController.text = "";
-        PathProvider.saveData(_myList);
+        tdList.add(newList);
+        textcontroller.text = "";
+        Path.saveData(tdList);
       });
     }
   }
@@ -52,7 +52,7 @@ class _ScreenState extends State<ToDoScreen> {
               children: <Widget>[
                 Expanded(
                   child: TextField(
-                    controller: _textfieldController,
+                    controller: textcontroller,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
                           borderSide:
@@ -64,12 +64,12 @@ class _ScreenState extends State<ToDoScreen> {
                   child: Text("Add"),
                   color: Colors.lightBlueAccent,
                   textColor: Colors.white,
-                  onPressed: _addTask,
+                  onPressed: taskadd,
                 ),
               ],
             ),
           ),
-          TaskList(_myList),
+          ToDoTaskList(tdList),
         ],
       ),
     );

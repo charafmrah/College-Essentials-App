@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:college_essentials_app/todo_list_resources/path.dart';
 
-class TaskList extends StatefulWidget {
-  List _myList;
+class ToDoTaskList extends StatefulWidget {
+  List todoList;
 
-  TaskList(this._myList);
+  ToDoTaskList(this.todoList);
 
   @override
   _TaskListState createState() => _TaskListState();
 }
 
-class _TaskListState extends State<TaskList> {
+class _TaskListState extends State<ToDoTaskList> {
   Map<String, dynamic> _lastRemoved;
   int _lastPosRemoved;
 
   @override
   Widget build(BuildContext context) {
-    var _myList = widget._myList;
+    var _myList = widget.todoList;
 
     return Expanded(
       child: RefreshIndicator(
@@ -31,7 +31,7 @@ class _TaskListState extends State<TaskList> {
               else
                 return 0;
             });
-            PathProvider.saveData(_myList);
+            Path.saveData(_myList);
           });
         },
         child: ListView.builder(
@@ -63,25 +63,25 @@ class _TaskListState extends State<TaskList> {
                 onChanged: (c) {
                   setState(() {
                     _myList[index]["done"] = c;
-                    PathProvider.saveData(_myList);
+                    Path.saveData(_myList);
                   });
                 },
               ),
               onDismissed: (direction) {
                 setState(() {
-                  _lastRemoved = Map.from(widget._myList[index]);
+                  _lastRemoved = Map.from(widget.todoList[index]);
                   _lastPosRemoved = index;
-                  widget._myList.removeAt(index);
+                  widget.todoList.removeAt(index);
 
-                  PathProvider.saveData(_myList);
+                  Path.saveData(_myList);
                   final snack = SnackBar(
                     content: Text("Task ${_lastRemoved["title"]} removed!"),
                     action: SnackBarAction(
                       label: "Undo",
                       onPressed: () {
                         setState(() {
-                          widget._myList.insert(_lastPosRemoved, _lastRemoved);
-                          PathProvider.saveData(_myList);
+                          widget.todoList.insert(_lastPosRemoved, _lastRemoved);
+                          Path.saveData(_myList);
                         });
                       },
                     ),

@@ -1,6 +1,6 @@
 import 'package:college_essentials_app/MyHomePage.dart';
 import 'package:college_essentials_app/screens/PomodoroTimer.dart';
-import 'package:college_essentials_app/screens/GradesTracker.dart';
+import 'package:college_essentials_app/screens/BasicCalculator.dart';
 import 'package:college_essentials_app/screens/NotesList.dart';
 import 'package:college_essentials_app/screens/ToDoList.dart';
 import 'package:college_essentials_app/screens/UpcomingEvents.dart';
@@ -23,7 +23,7 @@ class Navigation {
 
   static Future navigateToGradesTracker(context) async {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => GradesTracker()));
+        context, MaterialPageRoute(builder: (context) => basicCalc()));
   }
 
   static Future navigateToNotes(context) async {
@@ -33,7 +33,7 @@ class Navigation {
 
   static Future navigateToToDoList(context) async {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ToDoScreen()));
+        context, MaterialPageRoute(builder: (context) => ToDoListScreen()));
   }
 
   static Future navigateToUpcomingEvents(context) async {
