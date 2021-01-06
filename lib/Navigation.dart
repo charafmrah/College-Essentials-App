@@ -1,7 +1,7 @@
 import 'package:college_essentials_app/MyHomePage.dart';
 import 'package:college_essentials_app/screens/PomodoroTimer.dart';
 import 'package:college_essentials_app/screens/GradesTracker.dart';
-import 'package:college_essentials_app/screens/Notes.dart';
+import 'package:college_essentials_app/screens/NotesList.dart';
 import 'package:college_essentials_app/screens/ToDoList.dart';
 import 'package:college_essentials_app/screens/UpcomingEvents.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,8 @@ class Navigation {
   }
 
   static Future navigateToNotes(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Notes()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => NotesList()));
   }
 
   static Future navigateToToDoList(context) async {
