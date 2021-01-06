@@ -1,4 +1,4 @@
-import 'dart:math' as math;
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 
@@ -7,148 +7,97 @@ class PomodoroTimer extends StatefulWidget {
   _PomodoroTimerState createState() => _PomodoroTimerState();
 }
 
-class _PomodoroTimerState extends State<PomodoroTimer>
-    with TickerProviderStateMixin {
-  AnimationController controller;
-
-  String get timerString {
-    Duration duration = controller.duration * controller.value;
-    return '${duration.inMinutes}:${(duration.inSeconds % 60).toString().padLeft(2, '0')}';
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(minutes: 25),
-    );
-  }
+class _PomodoroTimerState extends State<PomodoroTimer> {
+  int _counter = 25;
+  Timer _timer;
+  String startTimer = "Start 25 minutes count down";
+  bool isEnabled = true;
+  bool _canShowButton = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text(
-          'Pomodoro Timer',
-        ),
-        backgroundColor: Colors.lightBlueAccent,
+        title: Text("Pomodoro Timer"),
       ),
-      body: AnimatedBuilder(
-          animation: controller,
-          builder: (context, child) {
-            return Stack(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.bottomCenter,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.center,
-                          child: AspectRatio(
-                            aspectRatio: 1.0,
-                            child: Stack(
-                              children: <Widget>[
-                                Positioned.fill(
-                                  child: CustomPaint(
-                                      painter: CustomTimerPainter(
-                                    animation: controller,
-                                    backgroundColor: Colors.white,
-                                    color: Colors.white,
-                                  )),
-                                ),
-                                Align(
-                                  alignment: FractionalOffset.center,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      // Text(
-                                      //   "Count Down Timer",
-                                      //   style: TextStyle(
-                                      //       fontSize: 20.0,
-                                      //       color: Colors.white),
-                                      // ),
-                                      Text(
-                                        timerString,
-                                        style: TextStyle(
-                                            fontSize: 120.0,
-                                            color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      AnimatedBuilder(
-                          animation: controller,
-                          builder: (context, child) {
-                            return FloatingActionButton.extended(
-                                onPressed: () {
-                                  if (controller.isAnimating)
-                                    controller.stop();
-                                  else {
-                                    controller.reverse(
-                                        from: controller.value == 0.0
-                                            ? 1.0
-                                            : controller.value);
-                                  }
-                                },
-                                icon: Icon(controller.isAnimating
-                                    ? Icons.pause
-                                    : Icons.play_arrow),
-                                label: Text(
-                                    controller.isAnimating ? "Pause" : "Play"));
-                          }),
-                    ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            (_counter > 0)
+                ? Text(
+                    "! If the timer starts, you can't pause !",
+                    style: TextStyle(color: Colors.red.shade700, fontSize: 16),
+                  )
+                : Text(
+                    "DONE!",
+                    style: TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 58,
+                    ),
                   ),
-                ),
-              ],
-            );
-          }),
+            Container(
+              padding: EdgeInsets.all(20),
+            ),
+            Text(
+              '$_counter',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 60,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(30),
+              child: !_canShowButton
+                  ? const SizedBox.shrink()
+                  : MaterialButton(
+                      padding: EdgeInsets.all(30),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                          side: BorderSide(color: Colors.lightBlueAccent)),
+                      onPressed: () {
+                        if (_timer != null) {
+                          _timer.cancel();
+                        }
+
+                        _timer = Timer.periodic(
+                            Duration(minutes: 1, seconds: 1), (timer) {
+                          setState(() {
+                            if (_counter > 0) {
+                              _counter--;
+                            } else {
+                              _timer.cancel();
+                            }
+                          });
+                        });
+                      },
+                      child: Text(startTimer,
+                          style: TextStyle(color: Colors.white, fontSize: 18)),
+                      color: Colors.lightBlueAccent,
+                    ),
+            )
+          ],
+        ),
+      ),
     );
   }
-}
 
-class CustomTimerPainter extends CustomPainter {
-  CustomTimerPainter({
-    this.animation,
-    this.backgroundColor,
-    this.color,
-  }) : super(repaint: animation);
-
-  final Animation<double> animation;
-  final Color backgroundColor, color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = backgroundColor
-      ..strokeWidth = 10.0
-      ..strokeCap = StrokeCap.butt
-      ..style = PaintingStyle.stroke;
-
-    canvas.drawCircle(size.center(Offset.zero), size.width / 2.0, paint);
-    paint.color = color;
-    double progress = (1.0 - animation.value) * 2 * math.pi;
-    canvas.drawArc(Offset.zero & size, math.pi * 1.5, -progress, false, paint);
+  void hideWidget() {
+    setState(() {
+      _canShowButton = !_canShowButton;
+    });
   }
 
-  @override
-  bool shouldRepaint(CustomTimerPainter old) {
-    return animation.value != old.animation.value ||
-        color != old.color ||
-        backgroundColor != old.backgroundColor;
+  enableButton() {
+    setState(() {
+      isEnabled = true;
+    });
+  }
+
+  disableButton() {
+    setState(() {
+      isEnabled = false;
+    });
   }
 }

@@ -412,46 +412,46 @@ class _GpaCalculator extends State<GpaCalculator> {
               Text(
                 calculcateGpa(credit1, credit2, credit3, credit4, credit5,
                         grade1, grade2, grade3, grade4, grade5)
-                    .toString(),
+                    .toStringAsFixed(2),
                 style: Theme.of(context).textTheme.headline5,
               ),
             ]),
       ),
 
-      // menu bar:
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            // DrawerHeader(
-            //   child: Text('Options'),
-            //   decoration: BoxDecoration(
-            //     color: Colors.blue,
-            //   ),
-            // ),
-            ListTile(
-              title: Text('Home Page'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigation.navigateToMyHomePage(context);
-              },
-            ),
-            ListTile(
-              title: Text('To-Do List'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
+      // // menu bar:
+      // drawer: Drawer(
+      //   // Add a ListView to the drawer. This ensures the user can scroll
+      //   // through the options in the drawer if there isn't enough vertical
+      //   // space to fit everything.
+      //   child: ListView(
+      //     // Important: Remove any padding from the ListView.
+      //     padding: EdgeInsets.zero,
+      //     children: <Widget>[
+      //       // DrawerHeader(
+      //       //   child: Text('Options'),
+      //       //   decoration: BoxDecoration(
+      //       //     color: Colors.blue,
+      //       //   ),
+      //       // ),
+      //       ListTile(
+      //         title: Text('Home Page'),
+      //         onTap: () {
+      //           Navigator.pop(context);
+      //           Navigation.navigateToMyHomePage(context);
+      //         },
+      //       ),
+      //       ListTile(
+      //         title: Text('To-Do List'),
+      //         onTap: () {
+      //           // Update the state of the app
+      //           // ...
+      //           // Then close the drawer
+      //           Navigator.pop(context);
+      //         },
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

@@ -10,6 +10,9 @@ class NoteButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+          side: BorderSide(color: Colors.lightBlueAccent)),
       onPressed: _onPressed,
       child: Text(
         _text,
