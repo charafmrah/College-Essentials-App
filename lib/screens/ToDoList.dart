@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:college_essentials_app/ToDoListFile/path.dart';
-import 'package:college_essentials_app/ToDoListFile/TodoListTaskList.dart';
+import 'package:college_essentials_app/todo_list_resources/path.dart';
+import 'package:college_essentials_app/todo_list_resources/TodoListTaskList.dart';
 
 class ToDoScreen extends StatefulWidget {
   @override

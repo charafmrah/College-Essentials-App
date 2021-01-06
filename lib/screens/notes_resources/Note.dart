@@ -1,3 +1,4 @@
+import 'package:college_essentials_app/providers/NoteProvider.dart';
 import 'package:college_essentials_app/screens/inherited_widgets/NoteInheritedWidget.dart';
 import 'package:flutter/material.dart';
 
@@ -7,12 +8,13 @@ enum NoteMode { Editing, Adding }
 
 class Note extends StatefulWidget {
   final NoteMode noteMode;
-  final int index;
+  final Map<String, dynamic> note;
 
-  Note(this.noteMode, this.index);
+  Note(this.noteMode, this.note);
 
   @override
   _Note createState() {
+    // ignore: todo
     // TODO: implement createState
     return new _Note();
   }
@@ -26,8 +28,8 @@ class _Note extends State<Note> {
   @override
   void didChangeDependencies() {
     if (widget.noteMode == NoteMode.Editing) {
-      _titleController.text = _notes[widget.index]['title'];
-      _textController.text = _notes[widget.index]['text'];
+      _titleController.text = widget.note['title'];
+      _textController.text = widget.note['text'];
     }
 
     // TODO: implement didChangeDependencies
@@ -66,15 +68,19 @@ class _Note extends State<Note> {
                     final title = _titleController.text;
                     final text = _textController.text;
                     if (widget?.noteMode == NoteMode.Adding) {
-                      _notes.add({'title': title, 'text': text});
+                      NoteProvider.insertNote({'title': title, 'text': text});
                     } else if (widget?.noteMode == NoteMode.Editing) {
-                      _notes[widget.index] = {'title': title, 'text': text};
+                      NoteProvider.updateNote({
+                        'id': widget.note['id'],
+                        'title': _titleController.text,
+                        'text': _textController.text,
+                      });
                     }
                     Navigator.pop(context);
                   }),
                   widget.noteMode == NoteMode.Editing
-                      ? NoteButtons('Delete', Colors.red, () {
-                          _notes.removeAt(widget.index);
+                      ? NoteButtons('Delete', Colors.red, () async {
+                          await NoteProvider.deleteNote(widget.note['id']);
                           Navigator.pop(context);
                         })
                       : Container(),
