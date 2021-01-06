@@ -58,9 +58,9 @@ class MyHomePage extends StatelessWidget {
             ),
             RaisedButton.icon(
               icon: Icon(
-                Icons.description_outlined,
+                Icons.calculate_outlined,
               ),
-              label: new Text("Grades Tracker"),
+              label: new Text("Basic Calculator"),
               color: Colors.lightBlueAccent,
               textColor: Colors.white,
               onPressed: () => Navigation.navigateToGradesTracker(context),

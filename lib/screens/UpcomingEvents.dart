@@ -9,27 +9,27 @@ class UpcomingEvents extends StatefulWidget {
 }
 
 class _UpcomingEvents extends State<UpcomingEvents> {
-  CalendarController _controller;
-  Map<DateTime, List<dynamic>> _events;
-  List<dynamic> _selectedEvents;
-  TextEditingController _eventController;
-  SharedPreferences prefs;
+  CalendarController cont;
+  Map<DateTime, List<dynamic>> event;
+  List<dynamic> selectEvent;
+  TextEditingController eventCont;
+  SharedPreferences pref;
 
   @override
   void initState() {
     super.initState();
-    _controller = CalendarController();
-    _eventController = TextEditingController();
-    _events = {};
-    _selectedEvents = [];
+    cont = CalendarController();
+    eventCont = TextEditingController();
+    event = {};
+    selectEvent = [];
     initPrefs();
   }
 
   initPrefs() async {
-    prefs = await SharedPreferences.getInstance();
+    pref = await SharedPreferences.getInstance();
     setState(() {
-      _events = Map<DateTime, List<dynamic>>.from(
-          decodeMap(json.decode(prefs.getString("events") ?? "{}")));
+      event = Map<DateTime, List<dynamic>>.from(
+          decodeMap(json.decode(pref.getString("events") ?? "{}")));
     });
   }
 
@@ -61,13 +61,13 @@ class _UpcomingEvents extends State<UpcomingEvents> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TableCalendar(
-              events: _events,
+              events: event,
               initialCalendarFormat: CalendarFormat.week,
               calendarStyle: CalendarStyle(),
               startingDayOfWeek: StartingDayOfWeek.monday,
               onDaySelected: (date, events, _) {
                 setState(() {
-                  _selectedEvents = events;
+                  selectEvent = events;
                 });
               },
               builders: CalendarBuilders(
@@ -92,9 +92,9 @@ class _UpcomingEvents extends State<UpcomingEvents> {
                       style: TextStyle(color: Colors.black),
                     )),
               ),
-              calendarController: _controller,
+              calendarController: cont,
             ),
-            ..._selectedEvents.map((event) => ListTile(
+            ...selectEvent.map((event) => ListTile(
                   title: Text(event),
                 )),
           ],
@@ -113,30 +113,27 @@ class _UpcomingEvents extends State<UpcomingEvents> {
         context: context,
         builder: (context) => AlertDialog(
               content: TextField(
-                controller: _eventController,
+                controller: eventCont,
               ),
               actions: <Widget>[
                 FlatButton(
                   child: Text("Save"),
                   onPressed: () {
-                    if (_eventController.text.isEmpty) return;
-                    if (_events[_controller.selectedDay] != null) {
-                      _events[_controller.selectedDay]
-                          .add(_eventController.text);
+                    if (eventCont.text.isEmpty) return;
+                    if (event[cont.selectedDay] != null) {
+                      event[cont.selectedDay].add(eventCont.text);
                     } else {
-                      _events[_controller.selectedDay] = [
-                        _eventController.text
-                      ];
+                      event[cont.selectedDay] = [eventCont.text];
                     }
-                    prefs.setString("events", json.encode(encodeMap(_events)));
-                    _eventController.clear();
+                    pref.setString("events", json.encode(encodeMap(event)));
+                    eventCont.clear();
                     Navigator.pop(context);
                   },
                 )
               ],
             ));
     setState(() {
-      _selectedEvents = _events[_controller.selectedDay];
+      selectEvent = event[cont.selectedDay];
     });
   }
 }
