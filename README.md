@@ -1,6 +1,6 @@
 # College Essentials App
 
-A Flutter app.
+![The app flow](https://user-images.githubusercontent.com/20629020/115310084-e62ebb80-a175-11eb-8a84-a6243d059543.png)
 
 ## Abstract
 
