@@ -1,16 +1,7 @@
 # College Essentials App
 
-A new Flutter project.
+A new Flutter app.
 
-## Getting Started
+## Abstract
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+College Essentials is a mobile app & web app that has several features to help college students. Our goal with this app is to provide all the essentials that a regular college student might need. So far, we have created 6 different features: notes taking system, to-do list, GPA calculator, events planner, Pomodoro Timer, and a calculator. Our app was built using Flutter, which makes the app able to run on Android, iOS, and as a web app. We coded the app using Dart, but with the help of the Flutter framework, the app gets compiled to native machine code depending on the designated platform. Besides Flutter and Dart, we used SQL to create the app’s databases and Git for code & work coordination. We used Android Studio, VS Code, and an android simulator during the development process. For the testing phase, we used a physical Android device. We finished working on the proof-of-concept version to show what this app might look like after being fully developed. We believe that there is an issue in mobile apps right now: over-saturation. There are multiple apps that could be bundled into one single app to make the user’s experience richer. Our app solves this issue by providing our targeted audience (college students) with the necessary tools bundled in one app. We believe that our app could attract attention if we finish the final product. Our final product would get a better-looking design by a UX designer to make the app usable by the masses. We are also looking to add more features depending on our users’ needs. Before we go on to fully code the final product, we believe that we need to conduct some surveys regarding our current version. This is important because we always need unbiased opinions from outsiders that might see our product differently. Other than the software implementation part, for our product to be successful, we also need to focus on the software marketing side of the equation. The app stores are highly saturated, and we need to make our app unique and simple to understand before we launch it. We also need to prepare a marketing campaign even before launching the app.
