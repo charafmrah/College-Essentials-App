@@ -1,6 +1,6 @@
 # College Essentials App
 
-A new Flutter app.
+A Flutter app.
 
 ## Abstract
 
