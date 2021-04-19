@@ -1,4 +1,4 @@
-# college_essentials_app
+# College Essentials App
 
 A new Flutter project.
 
